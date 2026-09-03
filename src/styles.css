@@ -1,0 +1,43 @@
+:root {
+  --blue: #1a4480;
+  --ink: #1b1b1b;
+  --paper: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+.site { min-height: 100vh; display: flex; flex-direction: column; }
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 2rem; background: var(--blue); color: #fff;
+}
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.brand-name { font-weight: 700; font-size: 1.125rem; }
+.site-nav { display: flex; gap: 1.5rem; }
+.site-nav a { color: #fff; text-decoration: none; font-weight: 600; }
+.site-main { flex: 1; max-width: 60rem; width: 100%; margin: 0 auto; padding: 2rem; }
+.site-footer { border-top: 1px solid #ddd; padding: 1rem 2rem; font-size: 0.875rem; color: #555; }
+.hero { width: 100%; height: auto; border-radius: 0.5rem; }
+.notice-strip { margin: 1rem 0; padding: 0.75rem 1rem; background: #fff3cd; border-left: 4px solid #e6a800; }
+.muted-text { color: #9a9a9a; }
+.card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+.card { border: 1px solid #ccc; border-radius: 0.5rem; padding: 1rem; cursor: pointer; }
+.card p { margin: 0.5rem 0 0; color: #333; }
+.claim-form { display: grid; gap: 1rem; max-width: 30rem; }
+.field { display: grid; gap: 0.25rem; }
+.field input, .field select { padding: 0.5rem; border: 2px solid #767676; border-radius: 0.25rem; font: inherit; }
+.actions { display: flex; gap: 0.75rem; align-items: center; }
+button { padding: 0.5rem 1rem; border: 0; border-radius: 0.25rem; background: var(--blue); color: #fff; font: inherit; cursor: pointer; }
+.icon-button { padding: 0.5rem; }
+.stats { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+.stats td { border: 1px solid #ccc; padding: 0.5rem 0.75rem; text-align: left; }
+.stats tr:first-child td { background: #f0f0f0; font-weight: 700; }
+.search { display: flex; gap: 0.5rem; max-width: 30rem; }
+.search input { flex: 1; padding: 0.5rem; border: 2px solid #767676; border-radius: 0.25rem; font: inherit; }
+.social { display: flex; gap: 1rem; }
+.social a { color: var(--blue); }
