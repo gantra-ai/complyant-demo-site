@@ -1,0 +1,52 @@
+name: Complyant accessibility gate
+
+# The gate scans the source at this commit and compares it with the baseline
+# (the newest scan of main). New defects fail the job; known defects are
+# reported and counted, never blocking. The same call is posted back to the
+# commit as the "complyant/accessibility" status, so the pull request shows it.
+#
+# Secrets: COMPLYANT_API_URL (the API), COMPLYANT_TOKEN (a CI identity's token).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the Complyant gate on this commit
+        env:
+          COMPLYANT_API_URL: ${{ secrets.COMPLYANT_API_URL }}
+          COMPLYANT_TOKEN: ${{ secrets.COMPLYANT_TOKEN }}
+          # On pull_request the checkout sha is a merge commit; the gate is
+          # asked about the branch head, which is what the PR shows.
+          REF: ${{ github.head_ref || github.ref_name }}
+          SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$COMPLYANT_API_URL" || { echo "COMPLYANT_API_URL secret is not set"; exit 1; }
+          body=$(jq -n --arg r "$GITHUB_REPOSITORY" --arg ref "$REF" --arg sha "$SHA" \
+            '{repo_full_name: $r, ref: $ref, sha: $sha}')
+          echo "Gate: $GITHUB_REPOSITORY @ $REF ($SHA)"
+          response=$(curl --silent --show-error --fail-with-body --max-time 600 \
+            -H "Authorization: Bearer $COMPLYANT_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "ngrok-skip-browser-warning: 1" \
+            -d "$body" "$COMPLYANT_API_URL/v1/ci/gate")
+          echo "$response" | jq .
+          status=$(echo "$response" | jq -r .status)
+          new=$(echo "$response" | jq -r '.new_defects | length')
+          known=$(echo "$response" | jq -r .known_defect_count)
+          echo "## Complyant accessibility gate: $status" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "$new new defect(s), $known known. Scan: $(echo "$response" | jq -r .scan_url)" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" != "pass" ]; then
+            echo "$response" | jq -r '.new_defects[] | "::error file=\(.source_file),line=\(.source_line)::\(.severity): \(.message) (WCAG \(.wcag_criteria | join(", ")))"'
+            exit 1
+          fi
