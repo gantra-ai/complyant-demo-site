@@ -11,7 +11,7 @@ export default function App() {
     <div className="site">
       <header className="site-header">
         <div className="brand">
-          <img src={`${import.meta.env.BASE_URL}seal.svg`} width="48" height="48" />
+          <img src={`${import.meta.env.BASE_URL}seal.svg`} width="48" height="48" alt="Bureau of Workforce Programs seal" />
           <span className="brand-name">Bureau of Workforce Programs</span>
         </div>
         <nav className="site-nav">
