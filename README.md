@@ -26,9 +26,10 @@ Every defect has a clean single-file fix.
 | Where | What is wrong |
 |---|---|
 | `index.html` | `<html>` has no `lang` |
+| `src/App.tsx` | "Programs" menu button has no `aria-expanded`, and Escape closes the menu without returning focus to the button; "Get help" opens a modal dialog that never moves focus into itself and does not keep it there |
 | `src/App.tsx` | seal image has no `alt`; the document title never changes between pages |
-| `src/pages/Home.tsx` | hero image has no `alt`; rotating notice has no pause; heading jumps h1 to h3; low-contrast paragraph; two `div`s with `onClick` used as buttons; a "click here" link |
-| `src/pages/Apply.tsx` | five inputs with no label; duplicate `id="applicant"`; positive `tabIndex`; missing-field error shown by border colour only; print icon button has no name |
+| `src/pages/Home.tsx` | hero image has no `alt`; rotating notice has no pause; heading jumps h1 to h3; low-contrast paragraph; two `div`s with `onClick` used as buttons; a `role="button"` span with no `tabindex`; a "click here" link |
+| `src/pages/Apply.tsx` | five inputs with no label; duplicate `id="applicant"`; positive `tabIndex`; the SSN field swallows Tab until nine digits are typed (a keyboard trap); missing-field error shown by border colour only; print icon button has no name |
 | `src/pages/Statistics.tsx` | data table with no header cells; an empty link |
 | `src/pages/Contact.tsx` | search input has no label; two icon links with no name; heading jumps h1 to h4 |
 

@@ -38,6 +38,12 @@ export default function Apply() {
             type="text"
             value={ssn}
             onChange={(event) => setSsn(event.target.value)}
+            // A "mask" that keeps focus in the field until nine digits are
+            // typed. Tab and Shift+Tab are swallowed, so a keyboard user
+            // cannot leave it: a keyboard trap.
+            onKeyDown={(event) => {
+              if (event.key === "Tab" && ssn.replace(/\D/g, "").length < 9) event.preventDefault();
+            }}
             style={ssnMissing ? { borderColor: "#d00" } : undefined}
           />
         </div>

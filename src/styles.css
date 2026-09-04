@@ -18,8 +18,18 @@ body {
 }
 .brand { display: flex; align-items: center; gap: 0.75rem; }
 .brand-name { font-weight: 700; font-size: 1.125rem; }
-.site-nav { display: flex; gap: 1.5rem; }
+.site-nav { display: flex; gap: 1.5rem; align-items: center; }
 .site-nav a { color: #fff; text-decoration: none; font-weight: 600; }
+.menu { position: relative; }
+.menu-button, .help-button { background: transparent; border: 0; padding: 0; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.help-button { border: 1px solid #fff; padding: 0.25rem 0.75rem; border-radius: 0.25rem; }
+.menu-list { position: absolute; top: 100%; left: 0; margin: 0.5rem 0 0; padding: 0.5rem 0; list-style: none; min-width: 14rem; background: #fff; border: 1px solid #ccc; border-radius: 0.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; }
+.menu-list a { display: block; padding: 0.5rem 1rem; color: var(--ink); font-weight: 400; }
+.menu-list a:hover { background: #f0f0f0; }
+.dialog-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 20; }
+.dialog { background: #fff; color: var(--ink); max-width: 28rem; padding: 1.5rem; border-radius: 0.5rem; }
+.dialog h2 { margin-top: 0; }
+.link-button { color: var(--blue); text-decoration: underline; cursor: pointer; }
 .site-main { flex: 1; max-width: 60rem; width: 100%; margin: 0 auto; padding: 2rem; }
 .site-footer { border-top: 1px solid #ddd; padding: 1rem 2rem; font-size: 0.875rem; color: #555; }
 .hero { width: 100%; height: auto; border-radius: 0.5rem; }

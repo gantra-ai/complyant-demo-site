@@ -22,7 +22,12 @@ export default function Home() {
       <h1>Support for workers between jobs</h1>
       <img src={`${import.meta.env.BASE_URL}hero.svg`} className="hero" />
 
-      <div className="notice-strip">{NOTICES[notice]}</div>
+      <div className="notice-strip">
+        {NOTICES[notice]}{" "}
+        <span role="button" className="link-button" onClick={() => navigate("/contact")}>
+          Read the full notice
+        </span>
+      </div>
 
       <h3>What we do</h3>
       <p className="muted-text">
