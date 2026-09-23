@@ -32,6 +32,7 @@ body {
 .link-button { color: var(--blue); text-decoration: underline; cursor: pointer; }
 .site-main { flex: 1; max-width: 60rem; width: 100%; margin: 0 auto; padding: 2rem; }
 .site-footer { border-top: 1px solid #ddd; padding: 1rem 2rem; font-size: 0.875rem; color: #555; }
+.site-credit { font-size: 0.6875rem; margin: 0.25rem 0 0; }
 .hero { width: 100%; height: auto; border-radius: 0.5rem; }
 .notice-strip { margin: 1rem 0; padding: 0.75rem 1rem; background: #fff3cd; border-left: 4px solid #e6a800; }
 .muted-text { color: #9a9a9a; }

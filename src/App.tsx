@@ -37,6 +37,12 @@ export default function App() {
           The Bureau of Workforce Programs is a fictional agency. This site exists to demonstrate
           accessibility remediation and contains deliberate defects.
         </p>
+        <p className="site-credit">
+          Built by{" "}
+          <a href="https://gantra.tech" target="_blank" rel="noopener">
+            Gantra Technologies
+          </a>
+        </p>
       </footer>
     </div>
   );
