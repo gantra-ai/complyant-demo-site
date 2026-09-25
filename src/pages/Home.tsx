@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <h1>Support for workers between jobs</h1>
-      <img src={`${import.meta.env.BASE_URL}hero.svg`} className="hero" />
+      <img src={`${import.meta.env.BASE_URL}hero.svg`} className="hero" alt="[Author: describe the hero image content or purpose]" />
 
       <div className="notice-strip">
         {NOTICES[notice]}{" "}
