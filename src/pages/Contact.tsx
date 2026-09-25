@@ -23,6 +23,7 @@ export default function Contact() {
         </a>
       </div>
 
+      <img src={`${import.meta.env.BASE_URL}seal.svg`} width="32" height="32" />
       <h4>Regional offices</h4>
       <ul>
         <li>Northeast: 40 Federal Plaza, Suite 900</li>
