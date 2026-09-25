@@ -50,7 +50,7 @@ export default function Apply() {
 
         <div className="field">
           <span>Date of last employment</span>
-          <input type="date" tabIndex={3} />
+          <input type="date" />
         </div>
 
         <div className="field">
